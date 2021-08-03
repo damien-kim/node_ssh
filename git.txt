@@ -3,3 +3,10 @@ git init
 
 git add <files>
 git status
+git config --global user.name damien                    //글로벌 설정 : 내가 초래한 변경의 track down을 위함
+git config --global user.email damien.seoul@gmail.com   //글로벌 설정 : 내가 초래한 변경의 track down을 위함
+
+git commit ==> VIM이 실행되면 입력을 요구함. 변경 내용을 입력!!
+git log ==> shows version history
+
+* 새로운 버전을 만들기 전에도 변경된 파일들에 대해 git add ..를 통해 추가 하는 작업이 필요하다
