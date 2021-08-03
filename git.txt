@@ -1,0 +1,5 @@
+git init
+    .git folder is created where histories are tracked
+
+git add <files>
+git status
