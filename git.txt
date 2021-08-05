@@ -1,5 +1,7 @@
 git init
     .git folder is created where histories are tracked
+* copy codes from remote 
+git clone <source, ex: https://github.com/git/git> <local_dir>
 
 git add <files>
 git status
@@ -8,16 +10,18 @@ git config --global user.email damien.seoul@gmail.com   //글로벌 설정 : 내
 
 git commit -m (inline messaging) ==> VIM이 실행되면 입력을 요구함. 변경 내용을 입력!!
 git log ==> shows version history, option [-p] ==> 차이점을 commit 별로
-git diff id..id
+git diff id..id (working directory 와 staging (or index)비교)
 git diff ==> show differences of files that modified from last commit
+git commit --amend // message 내용 수정
 
 * 새로운 버전을 만들기 전에도 변경된 파일들에 대해 git add ..를 통해 추가 하는 작업이 필요하다 
 example) git add lib/author.js git.txt ==> commit은 하나의 파일단위로 하는것이 바람직 하나, 여러개의 파일을 선택 해서 할 수 있다. git add <file>로 포함된 파일만 commit의 대상이 된다. 즉 stage area에 놓이게 된다. commit이 된 파일들이 저장된 곳은 repository.
 
 과거 버전으로 회귀:
-git reset <id> ==> <id>가 최신 버전인 상태로 돌아감. reset은 가능하면 하지 않는 것이 원칙이다
+git reset <id> --hard (working directory, staging 그리고 repository모두에 해당)==> <id>가 최신 버전인 상태로 돌아감. reset은 가능하면 하지 않는 것이 원칙이다. by default it's --mixed (staging and repository)
 give revert <id> ==> commit을 취소 하면서 새로운 형태의 버전을 만듬
-
+* undo reset
+git reset --hard ORIG_HEAD (mixed, soft, by default it's mixed)
 git branch ==> 현재의 Branch를 보여줌 (master by default)
 
 * new branch
@@ -38,3 +42,22 @@ checkout to master, then "git merge exp"
 
 * delete a branch
 git branch -d exp
+
+* save content on a file that's not complete. 
+git stash
+git stash list (현재 WIP인 상태의 파일들 보여줌), 지우기 (git stash drop, git reset --hard)
+
+*다른 branch 작업후 다시 stach된 branch 로 checkout 후, "git stash apply" 그리고 계속해서 수정
+git stash apply
+
+
+*** remote repository
+git remote add node_sql https://github.com/damien-kim/node.git
+    "remote = https://github.com/damien-kim/node.git" 에 대해 node_sql이란 저장소로 접속
+git remote // check remote location
+git remote -v 
+git remote --help
+
+git push -u node_sql master // 원격저장소인 'node_sql' 에 현재 checkout인 상태인 master를 push. -u는 local과 remote를 연결시키는 옵션 - 한번만필요
+
+git pull //원격 저장소에 있는 내용을 로컬저장소로 받아옴
