@@ -69,5 +69,3 @@ git checkout <tag_name> // git checkout 1.0.0
 
 git tag -a 1.1.0 -m "bug fix..." // annotated tag
 git tag -d 1.1.0 // delete the tag
-
-what happened with push??
