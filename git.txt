@@ -61,3 +61,10 @@ git remote --help
 git push -u node_sql master // 원격저장소인 'node_sql' 에 현재 checkout인 상태인 master를 push. -u는 local과 remote를 연결시키는 옵션 - 한번만필요
 
 git pull //원격 저장소에 있는 내용을 로컬저장소로 받아옴
+
+*** tag -> 특정 commit에 tag를 설정
+git tag 1.0.0 master //현재 branch의 commit에 대한 tag가 만들어짐 - ligthweighted tag
+git tag 1.0.0 <commit id>
+git checkout <tag_name> // git checkout 1.0.0
+
+git tag -a 1.1.0 -m "bug fix..." // annotated tag
